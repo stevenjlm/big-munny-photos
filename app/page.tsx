@@ -25,14 +25,16 @@ import img12 from '../public/all/alaska.jpg';
 export default function Home() {
   return (
     <div className='h-full'>
-      <header className='flex justify-between items-center px-12 py-6'>
+      <header className='flex justify-between items-center px-24 py-6'>
         <div><Image
                 src={logo}
                 alt=""
                 className='w-25'
                 priority
               /></div>
-        <Link href="/contact" className='text-4xl md:text-lg lg:text-base rounded bg-white text-mybase-900 font-medium px-5 py-2 hover:bg-green-500'>Contact</Link>
+        <Link href="/contact" className='text-4xl md:text-base lg:text-base-sm
+          rounded-lg bg-white text-mybase-900 font-medium  hover:bg-green-500
+          px-8 py-8 md:px-5 md:py-4 lg:px-3 lg:py-1 xl:px-3 xl:py-0'>Contact</Link>
       </header>
       <main>
         <div className="flex flex-col items-center mx-12">
@@ -45,8 +47,8 @@ export default function Home() {
             <Tab className={({ selected }) => TabLogic(selected)}>Dance</Tab>
           </Tab.List>
           <Tab.Panels>
-            <Tab.Panel className="py-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2">
+            <Tab.Panel className="py-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
               {ImageColumn([img1, img2, img3])}
               {ImageColumn([img4, img5, img6])}
               {ImageColumn([img7, img8, img9])}
@@ -64,7 +66,7 @@ export default function Home() {
 }
 
 export function TabLogic(selected: boolean): string {
-  return selected ? 'bg-mybase-300 text-mybase-900 px-2 lg:px-8 md:px-4 sm:px-2 font-bold' : 'text-white px-2 lg:px-8 md:px-4 sm:px-2 font-bold';
+  return selected ? 'text-white px-2 lg:px-8 md:px-4 sm:px-2' : 'text-mybase-400 text-opacity-60 px-2 lg:px-8 md:px-4 sm:px-2';
 }
 
 

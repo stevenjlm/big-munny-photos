@@ -1,7 +1,7 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Roboto_Serif } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const mainFont = Roboto_Serif({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Big Munny Photos',
@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={mainFont.className}>{children}</body>
     </html>
   )
 }
