@@ -23,22 +23,27 @@ export default function Home() {
   return (
     <div className='h-full'>
       <header className='flex justify-between items-center px-12 py-6'>
-        <div><Image src="/main_logo.svg" alt="Main logo" width={300} height={200}/></div>
-        <button className='rounded-xl bg-white text-slate-950 text-4xl font-medium px-5 py-2 hover:bg-emerald-800 '>Contact</button>
+        <div><Image
+                src="/main_logo.svg"
+                width={screen.width*.25}
+                height={screen.height*.25}
+                alt={""}
+              /></div>
+        <button className='text-4xl md:text-lg lg:text-base rounded bg-white text-mybase-900 font-medium px-5 py-2 hover:bg-green-500'>Contact</button>
       </header>
       <main>
         <div className="flex flex-col items-center mx-12">
           <Tab.Group>
-          <Tab.List className="flex items-center gap-4 py-0 text-slate-200">
-            <Tab>All</Tab>
-            <Tab>Portraits</Tab>
-            <Tab>Travel</Tab>
-            <Tab>Automotive</Tab>
-            <Tab>Dance</Tab>
+          <Tab.List className="flex items-center text-4xl sm:text-2xl md:text-base lg:text-base xl:text-xs">
+            <Tab className={({ selected }) => TabLogic(selected)}>All</Tab>
+            <Tab className={({ selected }) => TabLogic(selected)}>Portraits</Tab>
+            <Tab className={({ selected }) => TabLogic(selected)}>Travel</Tab>
+            <Tab className={({ selected }) => TabLogic(selected)}>Automotive</Tab>
+            <Tab className={({ selected }) => TabLogic(selected)}>Dance</Tab>
           </Tab.List>
           <Tab.Panels>
             <Tab.Panel className="py-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 sm:grid-cols-1 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-4">
               {ImageColumn(img1, img2, img3)}
               {ImageColumn(img4, img5, img6)}
               {ImageColumn(img7, img8, img9)}
@@ -55,18 +60,22 @@ export default function Home() {
   )
 }
 
+export function TabLogic(selected: boolean): string {
+  return selected ? 'bg-mybase-300 text-mybase-900 px-2 lg:px-8 md:px-4 sm:px-2 font-bold' : 'bg-mybase-700 text-white px-2 lg:px-8 md:px-4 sm:px-2 font-bold';
+}
+
 
 export function ImageColumn(firstImg: any, secondImg: any, thirdImg: any) {
   return(
     <div className="grid gap-4">
         <div>
-            <Image src={firstImg} alt=" "/>
+            <Image src={firstImg} alt=" " className='rounded'/>
         </div>
         <div>
-            <Image src={secondImg} alt=" "/>
+            <Image src={secondImg} alt=" " className='rounded'/>
         </div>
         <div>
-            <Image src={thirdImg} alt=" "/>
+            <Image src={thirdImg} alt=" " className='rounded'/>
         </div>
     </div>
   )
