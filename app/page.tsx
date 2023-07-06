@@ -1,7 +1,10 @@
 "use client";
 
 import Image from 'next/image'
+import Link from 'next/link';
 import { Tab } from '@headlessui/react'
+
+import logo from '../public/main_logo.svg'
 
 // for all tab
 import img1 from '../public/all/cablecar.jpg';
@@ -24,12 +27,12 @@ export default function Home() {
     <div className='h-full'>
       <header className='flex justify-between items-center px-12 py-6'>
         <div><Image
-                src="/main_logo.svg"
-                width={screen.width*.25}
-                height={screen.height*.25}
-                alt={""}
+                src={logo}
+                alt=""
+                className='w-25'
+                priority
               /></div>
-        <button className='text-4xl md:text-lg lg:text-base rounded bg-white text-mybase-900 font-medium px-5 py-2 hover:bg-green-500'>Contact</button>
+        <Link href="/contact" className='text-4xl md:text-lg lg:text-base rounded bg-white text-mybase-900 font-medium px-5 py-2 hover:bg-green-500'>Contact</Link>
       </header>
       <main>
         <div className="flex flex-col items-center mx-12">
@@ -43,11 +46,11 @@ export default function Home() {
           </Tab.List>
           <Tab.Panels>
             <Tab.Panel className="py-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-4">
-              {ImageColumn(img1, img2, img3)}
-              {ImageColumn(img4, img5, img6)}
-              {ImageColumn(img7, img8, img9)}
-              {ImageColumn(img10, img11, img12)}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2">
+              {ImageColumn([img1, img2, img3])}
+              {ImageColumn([img4, img5, img6])}
+              {ImageColumn([img7, img8, img9])}
+              {ImageColumn([img10, img11, img12])}
             </div>
             </Tab.Panel>
             <Tab.Panel>Content 2</Tab.Panel>
@@ -61,22 +64,16 @@ export default function Home() {
 }
 
 export function TabLogic(selected: boolean): string {
-  return selected ? 'bg-mybase-300 text-mybase-900 px-2 lg:px-8 md:px-4 sm:px-2 font-bold' : 'bg-mybase-700 text-white px-2 lg:px-8 md:px-4 sm:px-2 font-bold';
+  return selected ? 'bg-mybase-300 text-mybase-900 px-2 lg:px-8 md:px-4 sm:px-2 font-bold' : 'text-white px-2 lg:px-8 md:px-4 sm:px-2 font-bold';
 }
 
 
-export function ImageColumn(firstImg: any, secondImg: any, thirdImg: any) {
+export function ImageColumn(images: Array<any>) {
   return(
-    <div className="grid gap-4">
-        <div>
-            <Image src={firstImg} alt=" " className='rounded'/>
-        </div>
-        <div>
-            <Image src={secondImg} alt=" " className='rounded'/>
-        </div>
-        <div>
-            <Image src={thirdImg} alt=" " className='rounded'/>
-        </div>
+    <div className="grid gap-2">
+      { images.map( (img) => <div>
+            <Image src={img} alt=" " className='rounded-sm' placeholder='blur'/>
+        </div>)}
     </div>
   )
 }
