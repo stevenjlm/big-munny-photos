@@ -29,3 +29,27 @@ body {
     @apply bg-gradient-to-r from-mybase-900 to-mybase-700;
   }
 }
+
+@layer components {
+  .input {
+    @apply py-8 md:py-6 lg:py-4 px-2 h-2 rounded mb-3 border-4
+    border-mybase-700 hover:border-green-500 invalid:border-red
+    valid:border-green-500;
+    width: 100%;
+  }
+
+  .textarea {
+    @apply py-8 md:py-6 lg:py-4 px-2 border rounded mb-2;
+    width: 100%;
+  }
+
+  .form {
+    @apply py-3 text-4xl md:text-sm w-full md:w-96 text-mybase-900;
+  }
+  
+  .sendButton {
+    @apply text-4xl md:text-xl lg:text-base
+      rounded-lg bg-white text-mybase-900 font-medium  hover:bg-green-500
+      px-8 py-8 md:px-5 md:py-6 lg:px-3 lg:py-3 xl:px-3 xl:py-0 disabled:opacity-40 disabled:hover:bg-red;
+  }
+}

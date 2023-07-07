@@ -1,53 +1,101 @@
+"use client";
+
 import Image from 'next/image'
 import Link from 'next/link';
+import React from 'react';
 
 import logo from '../../public/main_logo.svg'
 
 export default function Home() {
-    return (
-      <div className='h-full'>
-        <header className='flex justify-between items-center px-12 py-6'>
-          <div><Image
-                  src={logo}
-                  alt=""
-                  className='w-25'
-                  priority
-                /></div>
-          <Link href="/" className='text-4xl md:text-lg lg:text-base rounded bg-white text-mybase-900 font-medium px-5 py-2 hover:bg-red'>Back</Link>
-        </header>
+  const [emailField, setEmailField] = React.useState('');
+  const [nameField, setNameField] = React.useState('');
+  const [subjectField, setSubjectField] = React.useState('');
+  const [messageField, setMessageField] = React.useState('');
+  let tipMsg: string = "Please enter a valid email.";
 
-        <main>
-          <div className="flex flex-col 
-                    items-center justify-center">
-            <p className='py-2'>
-              Send a message to Big Munny Photos
-            </p>
-  
-            <form className='py-3 text-4xl md:text-sm'>
-                <input aria-label="Enter your email address" 
-                       type="text" placeholder="Email address" 
-                       className="w-full
-                              mr-1 md:mr-3 py-8 px-4 h-2 border 
-                              rounded mb-2" />
-                <input aria-label="Enter your name/nickname/alias/CIA agent #/etc." 
-                       type="text" placeholder="Name or (nickname/alias/CIA agent #/etc.)"
-                       className="w-full
-                        mr-3 py-8 px-4 h-2 border 
-                        rounded mb-2" />
-                <input aria-label="What is the subject of this message?" 
-                       type="text" placeholder="Subject"
-                       className="w-full
-                        mr-3 py-8 px-4 h-2 border 
-                        rounded mb-2" />
-  
-                <button type="submit"
-                        className="w-full mt-4">
-                    Login
-                </button>
-            </form>
-        </div>
-        </main>
-      </div>
-    )
+  const validateEmail = (email: string) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  function strip(text: string): string {
+    let trimmed = text.trim();
+    let stripped = trimmed.replace(/\s\s+/g, ' ');
+    return stripped
   }
+
+  function SubmitButton(){
+    if (validateEmail(emailField) &&
+      strip(nameField).length > 1
+      && strip(subjectField).length > 1 
+      && strip(messageField).length > 0){
+      tipMsg = "";  
+      return <button type="button" className="sendButton">Send</button>
+    } else {
+      if (!validateEmail(emailField)) {
+        tipMsg = "Please enter a valid email.";
+      } else if (!(strip(nameField).length > 1)) {
+        tipMsg = "Please enter a name with a least 2 characters.";
+      } else if (!(strip(subjectField).length > 1)) {
+        tipMsg = "Please enter a subject with a least 2 characters.";
+      } else if (!(strip(messageField).length > 0)) {
+        tipMsg = "Please enter a message.";
+      }
+      return <button type="button" className="sendButton" disabled>Send</button>
+    };
+  };
+
+  function TipMessageField() {
+    return <p className='text-white'>{tipMsg}</p>
+  }
+
+  return (
+    <div className='h-full'>
+      <header className='flex justify-between items-center px-12 py-6'>
+        <div><Image
+                src={logo}
+                alt=""
+                className='w-25'
+                priority
+              /></div>
+        <Link href="/" className='text-4xl md:text-lg lg:text-base rounded bg-white text-mybase-900 font-medium px-5 py-2 hover:bg-red'>Back</Link>
+      </header>
+
+      <main>
+        <div className="flex flex-col 
+                  items-center justify-center mx-12">
+          <p className='py-2'>
+            Send a message to Big Munny Photos
+          </p>
+
+          <form className='form'>
+              <br /><input id="email" aria-label="Enter your email address" 
+                      type="email" placeholder="Email address" 
+                      value={emailField} onChange={ e => setEmailField(e.target.value)}
+                      className="input" required={true}/>
+              <br /><input id="name" aria-label="Enter your name/nickname/alias/CIA agent #/etc." 
+                      type="text" placeholder="Name or (nickname/alias/CIA agent #/etc.)"
+                      value={nameField} onChange={ e => setNameField(e.target.value)}
+                      className="input" required={true} minLength={2} maxLength={69}/>
+              <br /><input id="subject" aria-label="What is the subject of this message?" 
+                      type="text" placeholder="Subject (e.g. Photoshoot in Oakland)"
+                      value={subjectField} onChange={ e => setSubjectField(e.target.value)}
+                      className="input"
+                      required={true} minLength={2} maxLength={69}/>
+              <br /><textarea id="message" aria-label="Message..." rows={5} placeholder="Message..."
+                      value={messageField} onChange={ e => setMessageField(e.target.value)}
+                      className="textarea" 
+                      required={true} minLength={1} maxLength={200}/>
+
+              <br /><div className='flex justify-end'><SubmitButton/></div>
+              <TipMessageField />
+          </form>
+      </div>
+      </main>
+    </div>
+  )
+}
 
