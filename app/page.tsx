@@ -65,12 +65,12 @@ export default function Home() {
   )
 }
 
-export function TabLogic(selected: boolean): string {
+function TabLogic(selected: boolean): string {
   return selected ? 'text-white px-2 lg:px-8 md:px-4 sm:px-2' : 'text-mybase-400 text-opacity-60 px-2 lg:px-8 md:px-4 sm:px-2 hover:text-green-500';
 }
 
 
-export function ImageColumn(images: Array<any>) {
+function ImageColumn(images: Array<any>) {
   return(
     <div className="grid gap-2">
       { images.map( (img, idx) => <div key={"img" + idx.toString()}>
