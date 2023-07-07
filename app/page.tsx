@@ -73,7 +73,7 @@ export function TabLogic(selected: boolean): string {
 export function ImageColumn(images: Array<any>) {
   return(
     <div className="grid gap-2">
-      { images.map( (img) => <div>
+      { images.map( (img, idx) => <div key={"img" + idx.toString()}>
             <Image src={img} alt=" " className='rounded-sm' placeholder='blur'/>
         </div>)}
     </div>
