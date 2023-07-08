@@ -9,7 +9,7 @@ module.exports = {
     remotePatterns: [
         {
         protocol: 'https',
-        hostname: 'compositionbucket213515-dev.s3.amazonaws.com',
+        hostname: 'compositionbucket213515-dev.s3.us-west-1.amazonaws.com',
         port: '',
         pathname: '/public/**',
         },

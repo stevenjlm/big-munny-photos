@@ -7,12 +7,13 @@ import { Auth, Storage } from 'aws-amplify';
 import { useState, useEffect } from 'react'
 import { Amplify } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import AWS from 'aws-sdk'
+import AWS from 'aws-sdk';
 
 import logo from '../public/main_logo.svg'
+import { ConfigurationServicePlaceholders } from 'aws-sdk/lib/config_service_placeholders';
 
 // for all tab
-// import img1 from '../public/all/cablecar.jpg';
+import img1 from 'https://compositionbucket213515-dev.s3.us-west-1.amazonaws.com/public/all/ben.jpg';
 // import img2 from '../public/all/me_portrait.jpg';
 // import img3 from '../public/all/ciel.jpg';
 // import img4 from '../public/all/sf_rainbow.jpg';
@@ -45,23 +46,29 @@ const credentials = new AWS.CognitoIdentityCredentials({
 
 export default async function Home() {
 
-  const [images, getImages] = useState<any | string>([])
+  // const [images, getImages] = useState<string | string>()
 
-  const getUploadedImage = async () => {
-    const file = await Storage.get("all/ben.jpg", {
-        level: "public"
-    });
-    getImages(file)
-  }
-  useEffect(() => {
-      getUploadedImage()
-  }, [])
+  // const getUploadedImage = async () => {
+  //   const file = await Storage.get("all/ben.jpg", {
+  //       level: "public"
+  //   });
+  //   getImages(file)
+  // }
+  // useEffect(() => {
+  //     getUploadedImage()
+  // }, [])
+
+  // function debug() {
+  //   console.log("Hi")
+  //   console.log(images)
+  //   return images
+  // }
 
   return (
     <div className='h-full'>
       <header className='flex justify-between items-center px-24 py-6'>
         <div><Image
-                src={logo}
+                src={'https://compositionbucket213515-dev.s3.us-west-1.amazonaws.com/public/all/ben.jpg'}
                 alt=""
                 className='w-25'
                 priority
@@ -83,7 +90,7 @@ export default async function Home() {
           <Tab.Panels>
             <Tab.Panel className="py-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
-            <Image src={images} alt=" " className='rounded-sm'/>
+            <Image src={img1} alt=" " className='rounded-sm'/>
               {/* {ImageColumn([img1, img2, img3])}
               {ImageColumn([img4, img5, img6])}
               {ImageColumn([img7, img8, img9])}
