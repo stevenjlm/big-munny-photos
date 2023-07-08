@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.npmrc
 
 # testing
 /coverage
@@ -35,3 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 /public
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
