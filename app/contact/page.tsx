@@ -34,7 +34,7 @@ export default function Home() {
       && strip(subjectField).length > 1 
       && strip(messageField).length > 0){
       tipMsg = "";  
-      return <button type="button" className="sendButton">Send</button>
+      return <button type="button" className="sendButton" onClick={(e) => handleSubmit(e as unknown as MouseEvent)}>Send</button>
     } else {
       if (!validateEmail(emailField)) {
         tipMsg = "Please enter a valid email.";
@@ -53,6 +53,32 @@ export default function Home() {
     return <p className='text-white'>{tipMsg}</p>
   }
 
+  async function handleSubmit(e: MouseEvent) {
+    e.preventDefault();
+     
+    const res = await fetch("/api/sendgrid", {
+      body: JSON.stringify({
+        email: emailField,
+        fullname: nameField,
+        subject: subjectField,
+        message: messageField,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      tipMsg = "error";
+      return;
+    } else {
+      tipMsg = "form submitted";
+    }
+  };
+
   return (
     <div className='h-full'>
       <header className='flex justify-between items-center px-24 py-6'>
@@ -65,7 +91,7 @@ export default function Home() {
         <Link href="/" className='text-4xl md:text-lg lg:text-base rounded bg-white text-mybase-900 font-medium px-5 py-2 hover:bg-red'>
           <div className='flex ustify-between items-center'>
             <svg className="w-12 h-12 md:w-8 md:h-8 lg:w-6 lg:h-6 text-mybase-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 16">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.293 1.707 1.707 7.293a1 1 0 0 0 0 1.414l5.586 5.586A1 1 0 0 0 9 13.586V2.414a1 1 0 0 0-1.707-.707Z"/>
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7.293 1.707 1.707 7.293a1 1 0 0 0 0 1.414l5.586 5.586A1 1 0 0 0 9 13.586V2.414a1 1 0 0 0-1.707-.707Z"/>
             </svg>
             <Text className='px-3'>Back</Text>
           </div>
@@ -79,7 +105,7 @@ export default function Home() {
             Send a message to Big Munny Photos
           </p>
 
-          <form className='form'>
+          <form className='form' >
               <br /><input id="email" aria-label="Enter your email address" 
                       type="email" placeholder="Email address" 
                       value={emailField} onChange={ e => setEmailField(e.target.value)}
@@ -106,4 +132,3 @@ export default function Home() {
     </div>
   )
 }
-
