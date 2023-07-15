@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react';
+import {Text} from '@nextui-org/react';
 
 import logo from '../../public/main_logo.svg'
 
@@ -54,14 +55,21 @@ export default function Home() {
 
   return (
     <div className='h-full'>
-      <header className='flex justify-between items-center px-12 py-6'>
+      <header className='flex justify-between items-center px-24 py-6'>
         <div><Image
                 src={logo}
                 alt=""
                 className='w-25'
                 priority
               /></div>
-        <Link href="/" className='text-4xl md:text-lg lg:text-base rounded bg-white text-mybase-900 font-medium px-5 py-2 hover:bg-red'>Back</Link>
+        <Link href="/" className='text-4xl md:text-lg lg:text-base rounded bg-white text-mybase-900 font-medium px-5 py-2 hover:bg-red'>
+          <div className='flex ustify-between items-center'>
+            <svg className="w-12 h-12 md:w-8 md:h-8 lg:w-6 lg:h-6 text-mybase-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.293 1.707 1.707 7.293a1 1 0 0 0 0 1.414l5.586 5.586A1 1 0 0 0 9 13.586V2.414a1 1 0 0 0-1.707-.707Z"/>
+            </svg>
+            <Text className='px-3'>Back</Text>
+          </div>
+        </Link>
       </header>
 
       <main>
