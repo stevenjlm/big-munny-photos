@@ -53,7 +53,7 @@ export default function Home() {
           <Link href={'/'}>
             <Image
               src={logo}
-              alt=""
+              alt="Big Munny Logo"
               className='w-25'
               priority
             />

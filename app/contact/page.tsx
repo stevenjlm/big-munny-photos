@@ -82,7 +82,7 @@ export default function Home() {
           <Link href={'/'}>
             <Image
               src={logo}
-              alt=""
+              alt="Big Munny Logo"
               className='w-25'
               priority
             />
@@ -101,7 +101,7 @@ export default function Home() {
       <main>
         <div className="flex flex-col 
                   items-center justify-center mx-12">
-          <p className='py-2'>
+          <p className='py-2 text-white'>
             Send a message to Big Munny Photos
           </p>
 
