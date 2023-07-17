@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react';
 import {Text} from '@nextui-org/react';
+import { ContactGrid } from '@/utils/contactForm';
 
 import logo from '../../public/main_logo.svg'
 
@@ -14,36 +15,22 @@ export default function Home() {
   const [messageField, setMessageField] = React.useState('');
   let tipMsg: string = "Please enter a valid email.";
 
-  const validateEmail = (email: string) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
-
-  function strip(text: string): string {
-    let trimmed = text.trim();
-    let stripped = trimmed.replace(/\s\s+/g, ' ');
-    return stripped
-  }
-
   function SubmitButton(){
-    if (validateEmail(emailField) &&
-      strip(nameField).length > 1
-      && strip(subjectField).length > 1 
-      && strip(messageField).length > 0){
+    if (ContactGrid.validateEmail(emailField) &&
+      ContactGrid.validateName(nameField).isValid
+      && ContactGrid.validateSubject(subjectField).isValid
+      && ContactGrid.validateMessage(messageField).isValid){
       tipMsg = "";  
       return <button type="button" className="sendButton" onClick={(e) => handleSubmit(e as unknown as MouseEvent)}>Send</button>
     } else {
-      if (!validateEmail(emailField)) {
+      if (!ContactGrid.validateEmail(emailField)) {
         tipMsg = "Please enter a valid email.";
-      } else if (!(strip(nameField).length > 1)) {
-        tipMsg = "Please enter a name with a least 2 characters.";
-      } else if (!(strip(subjectField).length > 1)) {
-        tipMsg = "Please enter a subject with a least 2 characters.";
-      } else if (!(strip(messageField).length > 0)) {
-        tipMsg = "Please enter a message.";
+      } else if (!(ContactGrid.validateName(nameField).isValid)) {
+        tipMsg = "Name " + ContactGrid.validateName(nameField).msg;
+      } else if (!(ContactGrid.validateSubject(subjectField).isValid)) {
+        tipMsg = "Subject " + ContactGrid.validateSubject(subjectField).msg;
+      } else if (!(ContactGrid.validateMessage(messageField).isValid)) {
+        tipMsg = "Message " + ContactGrid.validateMessage(messageField).msg;
       }
       return <button type="button" className="sendButton" disabled>Send</button>
     };
@@ -55,7 +42,7 @@ export default function Home() {
 
   async function handleSubmit(e: MouseEvent) {
     e.preventDefault();
-     
+    
     const res = await fetch("/api/sendgrid", {
       body: JSON.stringify({
         email: emailField,
@@ -76,18 +63,23 @@ export default function Home() {
       return;
     } else {
       tipMsg = "form submitted";
+      console.log(tipMsg)
     }
   };
 
   return (
     <div className='h-full'>
       <header className='flex justify-between items-center px-24 py-6'>
-        <div><Image
-                src={logo}
-                alt=""
-                className='w-25'
-                priority
-              /></div>
+        <div>
+          <Link href={'/'}>
+            <Image
+              src={logo}
+              alt=""
+              className='w-25'
+              priority
+            />
+          </Link>
+        </div>
         <Link href="/" className='text-4xl md:text-lg lg:text-base rounded bg-white text-mybase-900 font-medium px-5 py-2 hover:bg-red'>
           <div className='flex ustify-between items-center'>
             <svg className="w-12 h-12 md:w-8 md:h-8 lg:w-6 lg:h-6 text-mybase-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 16">
@@ -122,7 +114,7 @@ export default function Home() {
               <br /><textarea id="message" aria-label="Message..." rows={5} placeholder="Message..."
                       value={messageField} onChange={ e => setMessageField(e.target.value)}
                       className="textarea" 
-                      required={true} minLength={1} maxLength={200}/>
+                      required={true} minLength={1} maxLength={400}/>
 
               <br /><div className='flex justify-end'><SubmitButton/></div>
               <TipMessageField />

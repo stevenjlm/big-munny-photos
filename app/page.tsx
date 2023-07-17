@@ -88,12 +88,15 @@ export default function Home() {
   return (
     <div className='h-full'>
       <header className='flex justify-between items-center px-24 py-6'>
-        <div><Image
-                src={logo}
-                alt=""
-                className='w-25'
-                priority
-              />
+        <div>
+          <Link href={'/'}>
+            <Image
+              src={logo}
+              alt=""
+              className='w-25'
+              priority
+            />
+          </Link>
         </div>
         <Link href="/contact" className='text-4xl md:text-base lg:text-base-sm
           rounded-lg bg-white text-mybase-900 font-medium  hover:bg-green-500
