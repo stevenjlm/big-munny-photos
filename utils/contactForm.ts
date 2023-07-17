@@ -1,13 +1,27 @@
-import DOMPurify from 'isomorphic-dompurify';
-
 export interface validation {
   isValid: boolean,
   msg: string,
 }
 
+export interface lenRange {
+  minimum: number,
+  maximum: number,
+}
 
 export class ContactGrid {
-
+  static nameRange: lenRange = {
+    minimum: 0,
+    maximum: 69
+  }
+  static subjectRange: lenRange = {
+    minimum: 1,
+    maximum: 69
+  }
+  static messageRange: lenRange = {
+    minimum: 1,
+    maximum: 400
+  }
+  
   constructor(public name: string,public email: string, public subject: string, public message: string) {
   }
 
@@ -23,13 +37,13 @@ export class ContactGrid {
       return validationRes;
     }
 
-    let subjectVal = ContactGrid.validateName(this.subject);
+    let subjectVal = ContactGrid.validateSubject(this.subject);
     if (!subjectVal.isValid) {
       validationRes.msg = "subject invalid";
       return validationRes;
     }
 
-    let messageVal = ContactGrid.validateName(this.message);
+    let messageVal = ContactGrid.validateMessage(this.message);
     if (!messageVal.isValid) {
       validationRes.msg = "message invalid";
       return validationRes;
@@ -47,17 +61,23 @@ export class ContactGrid {
 
   static validateName(name: string): validation {
     let stripped = this.strip(name);
-    return this.checkLength(stripped, 2, 69);
+    return this.checkLength(stripped,
+      ContactGrid.nameRange.minimum,
+      ContactGrid.nameRange.maximum);
   }
 
   static validateSubject(subject: string): validation {
     let stripped = this.strip(subject);
-    return this.checkLength(stripped, 2, 69);
+    let cleaned = stripped.replace(/[^a-zA-Z0-9 ]/g, "");
+    return this.checkLength(cleaned,
+      ContactGrid.subjectRange.minimum, ContactGrid.subjectRange.maximum);
   }
 
   static validateMessage(message: string): validation {
     let stripped = this.strip(message);
-    return this.checkLength(stripped, 1, 400);
+    let cleaned = stripped.replace(/[^a-zA-Z0-9 ]/g, "");
+    return this.checkLength(cleaned,
+      ContactGrid.messageRange.minimum, ContactGrid.subjectRange.maximum);
   }
 
   static checkLength(inString: string, minLen: number, maxLen: number) {
@@ -105,8 +125,7 @@ export class ContactGrid {
   }
 
   static strip(text: string): string {
-    let sanitized = DOMPurify.sanitize(text);
-    let trimmed = sanitized.trim();
+    let trimmed = text.trim();
     let stripped = trimmed.replace(/\s\s+/g, ' ');
     return stripped
   }

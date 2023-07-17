@@ -113,7 +113,7 @@ export default function Home() {
       <main>
         <div className="flex flex-col items-center mx-12">
           <Tab.Group>
-          <Tab.List className="flex items-center text-5xl sm:text-2xl md:text-base lg:text-base xl:text-xs">
+          <Tab.List className="flex items-center text-5xl sm:text-2xl md:text-lg lg:text-lg xl:text-base">
             <Tab className={({ selected }) => TabLogic(selected)}>All</Tab>
             <Tab className={({ selected }) => TabLogic(selected)}>People</Tab>
             <Tab className={({ selected }) => TabLogic(selected)}>Travel</Tab>

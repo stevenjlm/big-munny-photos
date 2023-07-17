@@ -113,7 +113,7 @@ export default function Home() {
               <br /><input id="name" aria-label="Enter your name/nickname/alias/CIA agent #/etc." 
                       type="text" placeholder="Name or (nickname/alias/CIA agent #/etc.)"
                       value={nameField} onChange={ e => setNameField(e.target.value)}
-                      className="input" required={true} minLength={2} maxLength={69}/>
+                      className="input" required={true} minLength={1} maxLength={69}/>
               <br /><input id="subject" aria-label="What is the subject of this message?" 
                       type="text" placeholder="Subject (e.g. Photoshoot in Oakland)"
                       value={subjectField} onChange={ e => setSubjectField(e.target.value)}
@@ -121,7 +121,7 @@ export default function Home() {
                       required={true} minLength={2} maxLength={69}/>
               <br /><textarea id="message" aria-label="Message..." rows={5} placeholder="Message..."
                       value={messageField} onChange={ e => setMessageField(e.target.value)}
-                      className="textarea" 
+                      className="textarea"
                       required={true} minLength={1} maxLength={400}/>
 
               <br /><div className='flex justify-end'><SubmitButton/></div>
