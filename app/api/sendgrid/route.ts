@@ -13,12 +13,12 @@ export async function POST(req: Request) {
     if (!validatorRes.isValid) {
       return NextResponse.json({ error: validatorRes.msg, status: 404 });
     }
-    await sendgrid.send({
-      to: "bigmunnyphotos@gmail.com", // Your email where you'll receive emails
-      from: "bigmunnyphotos@gmail.com", // your website email address here
-      subject: `${body.subject}`,
-      html: buildEmail(body),
-    });
+    // await sendgrid.send({
+    //   to: "bigmunnyphotos@gmail.com", // Your email where you'll receive emails
+    //   from: "bigmunnyphotos@gmail.com", // your website email address here
+    //   subject: `${body.subject}`,
+    //   html: buildEmail(body),
+    // });
   } catch (error: any) {
     // console.log(error);
     return NextResponse.json({ error: error.message, status: (error.statusCode || 500) });

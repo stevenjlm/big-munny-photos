@@ -1,4 +1,4 @@
-import * as DOMPurify from 'dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 
 export interface validation {
   isValid: boolean,
@@ -14,7 +14,7 @@ export class ContactGrid {
   public validateFormAPI(): validation  {
     let validationRes: validation = {
       isValid: false,
-      msg: ""
+      msg: "err"
     }
   
     let nameVal = ContactGrid.validateName(this.name);
@@ -47,7 +47,7 @@ export class ContactGrid {
 
   static validateName(name: string): validation {
     let stripped = this.strip(name);
-    return this.checkLength(stripped, 1, 69);
+    return this.checkLength(stripped, 2, 69);
   }
 
   static validateSubject(subject: string): validation {
