@@ -236,8 +236,10 @@ function ImageColumn(images: Array<any>, altCaptions: Array<string>) {
   return(
     <div className="grid gap-2">
       { images.map( (img, idx) => <div key={"img" + idx.toString()}>
+          <a href={img.src}>
             <Image src={img} alt={altCaptions[idx]} className='rounded-sm'
               placeholder='blur' width={500} loading={loadingType(altCaptions[idx])} />
+          </a>
         </div>)}
     </div>
   )

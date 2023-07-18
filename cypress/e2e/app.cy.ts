@@ -1,6 +1,5 @@
 describe('Navigation', () => {
   it('should navigate to the contact page', () => {
-    cy.viewport('iphone-6')
     // Start from the index page
     cy.visit('/')
  
@@ -86,5 +85,21 @@ describe('Home page content', () => {
 
     cy.get('h3').contains('Rates')
     cy.get('h3').contains('About Me')
+  })
+})
+
+describe('Test contact form', () => {
+  it('Contact form should send an email', () => {
+    // Start from the index page
+    cy.visit('/contact')
+ 
+    cy.get('[id=name]').type('John Doe')
+    cy.get('[id=email]').type('testy@test.com')
+    cy.get('[id=subject]').type('Test email from Cypress')
+    cy.get('[id=message]').type('Howdy, this is a test message from automated testing')
+
+    cy.get('button').contains('Send').click()
+
+    cy.get('h1').contains('Success')
   })
 })
