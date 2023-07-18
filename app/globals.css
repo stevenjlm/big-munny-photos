@@ -32,7 +32,7 @@ body {
 
 @layer components {
   .input {
-    @apply py-8 md:py-6 lg:py-4 px-2 h-2 rounded mb-3 border-4
+    @apply py-10 md:py-6 lg:py-4 px-2 h-2 rounded mb-3 border-4
     border-mybase-700 hover:border-green-500 invalid:border-red
     valid:border-green-500;
     width: 100%;
@@ -45,5 +45,9 @@ body {
 
   .form {
     @apply py-3 text-4xl md:text-sm w-full md:w-96 text-mybase-900;
+  }
+
+  .footericn {
+    @apply w-20 fill-white px-3 md:w-10 md:px-2 lg:w-5 lg:px-1
   }
 }

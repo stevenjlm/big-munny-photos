@@ -23,7 +23,7 @@ export default function Home() {
       && ContactGrid.validateSubject(subjectField).isValid
       && ContactGrid.validateMessage(messageField).isValid){
       setTipMessage("");
-      return <button id="sendbtn" type="button" className="text-mybase-900 bg-white rounded-lg hover:bg-green-500 px-6 py-3 text-sm font-bold text-center" onClick={(e) => handleSubmit(e as unknown as MouseEvent)}>Send</button>
+      return <button id="sendbtn" type="button" className="text-mybase-900 bg-white rounded-lg hover:bg-green-500 px-6 py-3 text-6xl md:text-2xl lg:text-base text-center" onClick={(e) => handleSubmit(e as unknown as MouseEvent)}>Send</button>
     } else {
       if (!ContactGrid.validateEmail(emailField)) {
         setTipMessage("Please enter a valid email.");
@@ -34,7 +34,7 @@ export default function Home() {
       } else if (!(ContactGrid.validateMessage(messageField).isValid)) {
         setTipMessage("Message " + ContactGrid.validateMessage(messageField).msg);
       }
-      return <button type="button" className="text-mybase-400 bg-mybase-700 cursor-not-allowed rounded-lg hover:bg-red px-6 py-3 text-sm text-center" disabled>Send</button>
+      return <button type="button" className="text-mybase-400 bg-mybase-700 cursor-not-allowed rounded-lg hover:bg-red px-6 py-3 text-6xl md:text-2xl lg:text-base text-center" disabled>Send</button>
     };
   };
 
@@ -83,7 +83,7 @@ export default function Home() {
             <Image
               src={logo}
               alt="Big Munny Logo"
-              className='w-25'
+              className='w-2/5 md:w-44'
               priority
             />
           </Link>
@@ -93,7 +93,7 @@ export default function Home() {
             <svg className="w-12 h-12 md:w-8 md:h-8 lg:w-6 lg:h-6 text-mybase-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 16">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7.293 1.707 1.707 7.293a1 1 0 0 0 0 1.414l5.586 5.586A1 1 0 0 0 9 13.586V2.414a1 1 0 0 0-1.707-.707Z"/>
             </svg>
-            <Text className='px-3'>Back</Text>
+            <Text className='px-3 py-2'>Back</Text>
           </div>
         </Link>
       </header>
@@ -101,7 +101,7 @@ export default function Home() {
       <main>
         <div className="flex flex-col 
                   items-center justify-center mx-12">
-          <p className='py-2 text-white'>
+          <p className='text-5xl md:text-xl lg:text-base py-6 md:py-4 lg:py-2 text-white'>
             Send a message to Big Munny Photos
           </p>
 
