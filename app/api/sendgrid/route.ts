@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: validatorRes.msg, status: 404 });
     }
     await sendgrid.send({
-      to: process.env.SENDGRID_DESTINATION as string,
+      to: process.env.SENDGRID_SOURCE as string,
       from: process.env.SENDGRID_SOURCE as string,
       subject: `${body.subject}`,
       html: buildEmail(body),
