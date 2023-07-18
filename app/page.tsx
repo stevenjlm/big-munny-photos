@@ -111,56 +111,69 @@ export default function Home() {
       <main>
         <div className="flex flex-col items-center mx-12">
           <Tab.Group>
-          <Tab.List className="flex items-center text-5xl sm:text-2xl md:text-lg lg:text-lg xl:text-base">
-            <Tab className={({ selected }) => TabLogic(selected)}>All</Tab>
-            <Tab className={({ selected }) => TabLogic(selected)}>People</Tab>
-            <Tab className={({ selected }) => TabLogic(selected)}>Travel</Tab>
-            <Tab className={({ selected }) => TabLogic(selected)}>Cars</Tab>
-            <Tab className={({ selected }) => TabLogic(selected)}>Dance</Tab>
-            <Tab className={({ selected }) => TabLogic(selected)}>Rates & Info</Tab>
-          </Tab.List>
-          <Tab.Panels>
-            <Tab.Panel className="py-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
-              {ImageColumn([img1, img2, img4], ["Cable car at night with lights","Person sitting", "San Francisco from Twin Peaks"])}
-              {ImageColumn([img3, img8, img6], ["Couple dancing", "Ballerina dancing", "4 cars"])}
-              {ImageColumn([img5, img7, img12], ["Sunset over San Francisco", "Person standing", "Woman studio photo"])}
-              {ImageColumn([img10, img11, img9], ["Cat looking at camera", "Golden hour over Santa Barbara beach", "Woman cosplaying"])}
-            </div>
-            </Tab.Panel>
-            <Tab.Panel className="py-8">
+            <Tab.List className="pillbox">
+              <Tab className={({ selected }) => TabLogic(selected)}>All</Tab>
+              <Tab className={({ selected }) => TabLogic(selected)}>By Category</Tab>
+              {/* <Tab className={({ selected }) => TabLogic(selected)}>People</Tab>
+              <Tab className={({ selected }) => TabLogic(selected)}>Travel</Tab>
+              <Tab className={({ selected }) => TabLogic(selected)}>Cars</Tab>
+              <Tab className={({ selected }) => TabLogic(selected)}>Dance</Tab> */}
+              <Tab className={({ selected }) => TabLogic(selected)}>Rates & Info</Tab>
+            </Tab.List>
+            <Tab.Panels>
+              <Tab.Panel className="py-8">
               <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
-                {ImageColumn([img203, img212, img201], ["Couple in wedding gown and suit", "Woman posing in from of store sign", "Woman studio shot"])}
-                {ImageColumn([img207, img205, img206], ["Man studio shot", "Couple outdoors", "Woman outdoors"])}
-                {ImageColumn([img208, img204, img209], ["Man standing in from of Stop sign", "Woman outdoors, bright", "Woman on a bridge in Paris"])}
-                {ImageColumn([img202, img210, img211], ["Woman outdoors", "Man studio photo", "Woman urban style photo"])}
+                {ImageColumn([img1, img2, img4], ["Cable car at night with lights","Person sitting", "San Francisco from Twin Peaks"])}
+                {ImageColumn([img3, img8, img6], ["Couple dancing", "Ballerina dancing", "4 cars"])}
+                {ImageColumn([img5, img7, img12], ["Sunset over San Francisco", "Person standing", "Woman studio photo"])}
+                {ImageColumn([img10, img11, img9], ["Cat looking at camera", "Golden hour over Santa Barbara beach", "Woman cosplaying"])}
               </div>
-            </Tab.Panel>
-            <Tab.Panel className="py-8">
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
-                {ImageColumn([img101, img102, img103], ["Chicago, view from above", "Philladelphia stairway", "Oakland Paramount theater"])}
-                {ImageColumn([img104, img105, img106], ["Chicago from the L train", "Bonnieux in France", "Golden gate bridge"])}
-                {ImageColumn([img108, img107, img109], ["Philadephia street view", "Blue angles in front of Golden Gate bridge", "Village south of France"])}
-                {ImageColumn([img110, img111, img112], ["Chicago from the river", "Fox theater in Oakland", "Fushimi Inari temple in Japan"])}
-              </div>
-            </Tab.Panel>
-            <Tab.Panel className="py-8">
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
-                {ImageColumn([img306, img307], ["Corvet sunset", "Orange McLaren"])}
-                {ImageColumn([img303, img305, img304], ["Blue Subaru WRX at night", "90s BMW M-series cars", "White Subaru WRX up close"])}
-                {ImageColumn([img309, img301], ["Red Nissan drift car", "Blue Subaru WRX up close"])}
-                {ImageColumn([img302, img308], ["Blue Subaru WRX from behind", "Subaru WRXs at night"])}
-              </div>
-            </Tab.Panel>
-            <Tab.Panel className="py-8">
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
-                {ImageColumn([img401], ["Balerinra outdoors"])}
-                {ImageColumn([img405], ["Breakdancing b-girl"])}
-                {ImageColumn([img403, img404], ["Dance pose hanging", "Dance pose, man"])}
-                {ImageColumn([img406], ["Balerina outdoors on beach"])}
-              </div>
-            </Tab.Panel>
-            <Tab.Panel className="py-8 mx-12">
+              </Tab.Panel>
+              <Tab.Panel>
+              <Tab.Group>
+                <Tab.List>
+                  <Tab className={({ selected }) => TabLogic(selected)}>People</Tab>
+                  <Tab className={({ selected }) => TabLogic(selected)}>Travel</Tab>
+                  <Tab className={({ selected }) => TabLogic(selected)}>Cars</Tab>
+                  <Tab className={({ selected }) => TabLogic(selected)}>Dance</Tab>
+                </Tab.List>
+                <Tab.Panels>
+                <Tab.Panel className="py-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
+                      {ImageColumn([img203, img212, img201], ["Couple in wedding gown and suit", "Woman posing in from of store sign", "Woman studio shot"])}
+                      {ImageColumn([img207, img205, img206], ["Man studio shot", "Couple outdoors", "Woman outdoors"])}
+                      {ImageColumn([img208, img204, img209], ["Man standing in from of Stop sign", "Woman outdoors, bright", "Woman on a bridge in Paris"])}
+                      {ImageColumn([img202, img210, img211], ["Woman outdoors", "Man studio photo", "Woman urban style photo"])}
+                    </div>
+                  </Tab.Panel>
+                  <Tab.Panel className="py-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
+                      {ImageColumn([img101, img102, img103], ["Chicago, view from above", "Philladelphia stairway", "Oakland Paramount theater"])}
+                      {ImageColumn([img104, img105, img106], ["Chicago from the L train", "Bonnieux in France", "Golden gate bridge"])}
+                      {ImageColumn([img108, img107, img109], ["Philadephia street view", "Blue angles in front of Golden Gate bridge", "Village south of France"])}
+                      {ImageColumn([img110, img111, img112], ["Chicago from the river", "Fox theater in Oakland", "Fushimi Inari temple in Japan"])}
+                    </div>
+                  </Tab.Panel>
+                  <Tab.Panel className="py-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
+                      {ImageColumn([img306, img307], ["Corvet sunset", "Orange McLaren"])}
+                      {ImageColumn([img303, img305, img304], ["Blue Subaru WRX at night", "90s BMW M-series cars", "White Subaru WRX up close"])}
+                      {ImageColumn([img309, img301], ["Red Nissan drift car", "Blue Subaru WRX up close"])}
+                      {ImageColumn([img302, img308], ["Blue Subaru WRX from behind", "Subaru WRXs at night"])}
+                    </div>
+                  </Tab.Panel>
+                  <Tab.Panel className="py-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
+                      {ImageColumn([img401], ["Balerinra outdoors"])}
+                      {ImageColumn([img405], ["Breakdancing b-girl"])}
+                      {ImageColumn([img403, img404], ["Dance pose hanging", "Dance pose, man"])}
+                      {ImageColumn([img406], ["Balerina outdoors on beach"])}
+                    </div>
+                  </Tab.Panel>
+                </Tab.Panels>
+              </Tab.Group>
+              </Tab.Panel>
+              <Tab.Panel className="py-8 mx-12">
               <Grid.Container gap={2}>
                 <Grid>
                   <Collapse.Group shadow>
@@ -254,7 +267,8 @@ export default function Home() {
 }
 
 function TabLogic(selected: boolean): string {
-  return selected ? 'text-white px-2 lg:px-8 md:px-4 sm:px-2' : 'text-mybase-400 text-opacity-60 px-2 lg:px-8 md:px-4 sm:px-2 hover:text-green-500';
+  return selected ? 'basepill rounded-lg text-mybase-900 bg-white shadow leading-6 ring-white ring-opacity-60 ring-offset-2 ring-offset-mybase-700 focus:outline-none focus:ring-2' : 
+  'basepill rounded-lg text-mybase-400 bg-mybase-700 text-opacity-60 hover:text-green-500/[.7] hover:bg-white/[.12]';
 }
 
 
