@@ -71,6 +71,7 @@ describe('Home page content', () => {
   it('People tab should have 13 images with alt captions', () => {
     // Start from the index page
     cy.visit('/')
+    cy.get('button').contains('By Category').click()
     cy.get('button').contains('People').click()
  
     cy.get('img[alt*="Couple in wedding gown and suit"')
@@ -81,6 +82,7 @@ describe('Home page content', () => {
   it('Rates & Info tab content', () => {
     // Start from the index page
     cy.visit('/')
+    cy.get('button').contains('By Category').click()
     cy.get('button').contains('Rates').click()
 
     cy.get('h3').contains('Rates')

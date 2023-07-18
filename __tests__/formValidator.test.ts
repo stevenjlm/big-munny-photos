@@ -1,4 +1,4 @@
-import { ContactGrid } from '@/utils/contactForm'
+import { ContactGrid, hashField } from '@/utils/contactForm'
 import '@testing-library/jest-dom'
  
 describe('Test email validator', () => {
@@ -63,4 +63,18 @@ describe('Test text field validator', () => {
       expect(val.isValid).toBe(false)
     })
   });
+})
+
+describe("Test hasher", () => {
+  it('same inputs should have same hash', () => {
+    let inputA = "hello";
+    let inputB = "hello";
+    expect(hashField(inputA)).toEqual(hashField(inputB));
+  })
+
+  it('different inputs should have different hash', () => {
+    let inputA = "hello";
+    let inputB = "hellox";
+    expect(hashField(inputA)).not.toEqual(hashField(inputB));
+  })
 })

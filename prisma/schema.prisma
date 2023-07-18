@@ -1,0 +1,33 @@
+// schema.prisma
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL") // uses connection pooling
+}
+
+model Message {
+    id        String   @id @default(cuid())
+    subject   String
+    message   String
+    sent      Boolean  @default(false)
+    read      Boolean  @default(false)
+    serverMsg String?  @map(name: "server_msg")
+    requested DateTime @default(now()) @map(name: "requested")
+    author    User?    @relation(fields: [authorId], references: [id])
+    authorId  String
+}
+
+model User {
+    id        String    @id @default(cuid())
+    name      String
+    email     String    @unique
+    createdAt DateTime  @default(now()) @map(name: "created_at")
+    updatedAt DateTime  @default(now()) @map(name: "updated_at")
+    messages  Message[]
+
+    @@map(name: "users")
+}

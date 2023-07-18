@@ -6,6 +6,7 @@ import { Tab } from '@headlessui/react'
 import { Calculator, BaseRate } from './calculator';
 import { Collapse, Text, Grid} from '@nextui-org/react';
 import React from 'react';
+import { Transition } from '@headlessui/react';
 
 import logo from '../public/main_logo.svg'
 // import allMenu from '../public/menu_text/menu-01.svg'

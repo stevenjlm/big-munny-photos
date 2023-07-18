@@ -1,3 +1,5 @@
+import crypto from 'crypto'
+
 export interface validation {
   isValid: boolean,
   msg: string,
@@ -6,6 +8,13 @@ export interface validation {
 export interface lenRange {
   minimum: number,
   maximum: number,
+}
+
+export function hashField(field: string) {
+    return crypto
+        .createHash('sha256')
+        .update(field)
+        .digest('hex');
 }
 
 export class ContactGrid {
@@ -26,6 +35,14 @@ export class ContactGrid {
   }
 
   public validateFormAPI(): validation  {
+    this.name = ContactGrid.strip(this.name);
+
+    let stripped = ContactGrid.strip(this.subject);
+    this.subject = stripped.replace(/[^a-zA-Z0-9 ]/g, "");
+
+    stripped = ContactGrid.strip(this.message);
+    this.message = stripped.replace(/[^a-zA-Z0-9 ]/g, "");
+
     let validationRes: validation = {
       isValid: false,
       msg: "err"
