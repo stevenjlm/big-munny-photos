@@ -58,4 +58,12 @@ body {
   .basepill {
     @apply px-4 lg:px-8 md:px-6 py-8 md:py-6 lg:py-3;
   }
+
+  .readhih {
+    @apply text-5xl md:text-2xl lg:text-xl;
+  }
+
+  .readhit {
+    @apply text-3xl md:text-2xl lg:text-base;
+  }
 }

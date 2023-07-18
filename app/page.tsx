@@ -130,96 +130,98 @@ export default function Home() {
               </div>
               </Tab.Panel>
               <Tab.Panel>
-              <Tab.Group>
-                <Tab.List>
-                  <Tab className={({ selected }) => TabLogic(selected)}>People</Tab>
-                  <Tab className={({ selected }) => TabLogic(selected)}>Travel</Tab>
-                  <Tab className={({ selected }) => TabLogic(selected)}>Cars</Tab>
-                  <Tab className={({ selected }) => TabLogic(selected)}>Dance</Tab>
-                </Tab.List>
-                <Tab.Panels>
-                <Tab.Panel className="py-8">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
-                      {ImageColumn([img203, img212, img201], ["Couple in wedding gown and suit", "Woman posing in from of store sign", "Woman studio shot"])}
-                      {ImageColumn([img207, img205, img206], ["Man studio shot", "Couple outdoors", "Woman outdoors"])}
-                      {ImageColumn([img208, img204, img209], ["Man standing in from of Stop sign", "Woman outdoors, bright", "Woman on a bridge in Paris"])}
-                      {ImageColumn([img202, img210, img211], ["Woman outdoors", "Man studio photo", "Woman urban style photo"])}
-                    </div>
-                  </Tab.Panel>
-                  <Tab.Panel className="py-8">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
-                      {ImageColumn([img101, img102, img103], ["Chicago, view from above", "Philladelphia stairway", "Oakland Paramount theater"])}
-                      {ImageColumn([img104, img105, img106], ["Chicago from the L train", "Bonnieux in France", "Golden gate bridge"])}
-                      {ImageColumn([img108, img107, img109], ["Philadephia street view", "Blue angles in front of Golden Gate bridge", "Village south of France"])}
-                      {ImageColumn([img110, img111, img112], ["Chicago from the river", "Fox theater in Oakland", "Fushimi Inari temple in Japan"])}
-                    </div>
-                  </Tab.Panel>
-                  <Tab.Panel className="py-8">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
-                      {ImageColumn([img306, img307], ["Corvet sunset", "Orange McLaren"])}
-                      {ImageColumn([img303, img305, img304], ["Blue Subaru WRX at night", "90s BMW M-series cars", "White Subaru WRX up close"])}
-                      {ImageColumn([img309, img301], ["Red Nissan drift car", "Blue Subaru WRX up close"])}
-                      {ImageColumn([img302, img308], ["Blue Subaru WRX from behind", "Subaru WRXs at night"])}
-                    </div>
-                  </Tab.Panel>
-                  <Tab.Panel className="py-8">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
-                      {ImageColumn([img401], ["Balerinra outdoors"])}
-                      {ImageColumn([img405], ["Breakdancing b-girl"])}
-                      {ImageColumn([img403, img404], ["Dance pose hanging", "Dance pose, man"])}
-                      {ImageColumn([img406], ["Balerina outdoors on beach"])}
-                    </div>
-                  </Tab.Panel>
-                </Tab.Panels>
-              </Tab.Group>
+                <Tab.Group>
+                  <div className="flex flex-col items-center mx-12 py-2">
+                    <Tab.List className="pillbox">
+                      <Tab className={({ selected }) => TabLogic(selected)}>People</Tab>
+                      <Tab className={({ selected }) => TabLogic(selected)}>Travel</Tab>
+                      <Tab className={({ selected }) => TabLogic(selected)}>Cars</Tab>
+                      <Tab className={({ selected }) => TabLogic(selected)}>Dance</Tab>
+                    </Tab.List>
+                    <Tab.Panels>
+                      <Tab.Panel className="py-8">
+                          <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
+                            {ImageColumn([img203, img212, img201], ["Couple in wedding gown and suit", "Woman posing in from of store sign", "Woman studio shot"])}
+                            {ImageColumn([img207, img205, img206], ["Man studio shot", "Couple outdoors", "Woman outdoors"])}
+                            {ImageColumn([img208, img204, img209], ["Man standing in from of Stop sign", "Woman outdoors, bright", "Woman on a bridge in Paris"])}
+                            {ImageColumn([img202, img210, img211], ["Woman outdoors", "Man studio photo", "Woman urban style photo"])}
+                          </div>
+                        </Tab.Panel>
+                        <Tab.Panel className="py-8">
+                          <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
+                            {ImageColumn([img101, img102, img103], ["Chicago, view from above", "Philladelphia stairway", "Oakland Paramount theater"])}
+                            {ImageColumn([img104, img105, img106], ["Chicago from the L train", "Bonnieux in France", "Golden gate bridge"])}
+                            {ImageColumn([img108, img107, img109], ["Philadephia street view", "Blue angles in front of Golden Gate bridge", "Village south of France"])}
+                            {ImageColumn([img110, img111, img112], ["Chicago from the river", "Fox theater in Oakland", "Fushimi Inari temple in Japan"])}
+                          </div>
+                        </Tab.Panel>
+                        <Tab.Panel className="py-8">
+                          <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
+                            {ImageColumn([img306, img307], ["Corvet sunset", "Orange McLaren"])}
+                            {ImageColumn([img303, img305, img304], ["Blue Subaru WRX at night", "90s BMW M-series cars", "White Subaru WRX up close"])}
+                            {ImageColumn([img309, img301], ["Red Nissan drift car", "Blue Subaru WRX up close"])}
+                            {ImageColumn([img302, img308], ["Blue Subaru WRX from behind", "Subaru WRXs at night"])}
+                          </div>
+                        </Tab.Panel>
+                        <Tab.Panel className="py-8">
+                          <div className="grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-1 gap-2 px-24">
+                            {ImageColumn([img401], ["Balerinra outdoors"])}
+                            {ImageColumn([img405], ["Breakdancing b-girl"])}
+                            {ImageColumn([img403, img404], ["Dance pose hanging", "Dance pose, man"])}
+                            {ImageColumn([img406], ["Balerina outdoors on beach"])}
+                          </div>
+                        </Tab.Panel>
+                    </Tab.Panels>
+                  </div>
+                </Tab.Group>
               </Tab.Panel>
               <Tab.Panel className="py-8 mx-12">
               <Grid.Container gap={2}>
                 <Grid>
                   <Collapse.Group shadow>
-                    <Collapse title="Rates" className='text-xl'>
-                      <Text className='py-2'>I will always confirm rates before booking.</Text>
-                      <Text className='py-2'>
+                    <Collapse title="Rates" className='readhih'>
+                      <Text className='readhit py-2'>I will always confirm rates before booking.</Text>
+                      <Text className='readhit py-2'>
                         The formula is:
                       </Text>
-                      <Text className='py-2'>
+                      <Text className='readhit py-2'>
                         ${BaseRate} (/hour) * (hours of shooting + hours of round-trip transportation beyond 1 hr)
                       </Text>
                     </Collapse>
 
-                    <Collapse title="Quote/Estimate" className='text-xl'>
+                    <Collapse title="Quote/Estimate" className='readhih'>
                       <Calculator></Calculator>
                     </Collapse>
 
-                    <Collapse title="What is included" className='text-xl'>          
-                      <Text className='py-2'>
+                    <Collapse title="What is included" className='readhih'>          
+                      <Text className='readhit py-2'>
                         My editing policy is flexible, please inquire if you have special requirements. Otherwise, generally, I proceed as follows:
                       </Text>
-                      <Text className='py-2'>
+                      <Text className='readhit py-2'>
                         After the photo shoot, I will send you all the photos with basic editing. You then select 10 photos per hour we spent shooting. I edited those photos in final form. The photos will be edited to fit your goals: edited for online, or for print, for example.
                       </Text>
                     </Collapse>
 
-                    <Collapse title="FAQ" className='text-xl'>
-                      <Text h1 weight={'bold'}>What locations do you serve?</Text>
-                      <Text>Oakland, CA and anywhere within a 30 min drive/transit of Oakland.</Text>
-                      <Text>Anywhere else in the Bay Area is possible, but I will charge a higher rate. See the &quot;Rates&quot; tab for estimates.</Text>
+                    <Collapse title="FAQ" className='readhih'>
+                      <Text className='readhih' h1 weight={'bold'}>What locations do you serve?</Text>
+                      <Text className='readhih'>Oakland, CA and anywhere within a 30 min drive/transit of Oakland.</Text>
+                      <Text className='readhih'>Anywhere else in the Bay Area is possible, but I will charge a higher rate. See the &quot;Rates&quot; tab for estimates.</Text>
 
-                      <Text h1 weight={'bold'}>Privacy Protection:</Text>
-                      <Text>All photos are stored locally on fully encrypted hard drives. Photos are also backed-up and shared with clients via end-to-end encrypted cloud storage (see <Link href={'https://www.sync.com/'}>sync.com</Link>).</Text>
-                      <Text>For enhanced confidentiality, please ask for my <Link href={'https://signal.org/'}>Signal</Link> number when contacting me.</Text>
+                      <Text className='readhih' h1 weight={'bold'}>Privacy Protection:</Text>
+                      <Text className='readhih'>All photos are stored locally on fully encrypted hard drives. Photos are also backed-up and shared with clients via end-to-end encrypted cloud storage (see <Link href={'https://www.sync.com/'}>sync.com</Link>).</Text>
+                      <Text className='readhih'>For enhanced confidentiality, please ask for my <Link href={'https://signal.org/'}>Signal</Link> number when contacting me.</Text>
                     </Collapse>
-                    <Collapse title="About Me" className='text-xl'>
+                    <Collapse title="About Me" className='readhih'>
                       <Image src={img2} alt="Photo of Big Munny" width={200} className='rounded-sm' />
-                      <Text className='py-3'>
+                      <Text className='readhit py-3'>
                         One day, I went to retrieve a pizza my roommates had ordered, and it was under the name “$tev€n Munn¥.” I was already known as Big Steven among friends, so Big Munny became the new name.
                       </Text>
 
-                      <Text className='py-3'>
+                      <Text className='readhit py-3'>
                         This was just around the same time I became interested in photography (2017). Thanks to a lively community of photographers at UC Santa Barbara, I quickly grew fond of this awesome activity.
                       </Text>
 
-                      <Text className='py-3'>
+                      <Text className='readhit py-3'>
                         A trip to Japan later in 2017 prompted me to invest heavily in my photography gear and take my newfound hobby seriously. Landscapes and travel photography are a core aspect of my work; however, I love the challenge of shooting portraits and I practice every chance I can get.
                       </Text>
                     </Collapse>
