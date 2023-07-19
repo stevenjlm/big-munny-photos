@@ -15,7 +15,7 @@ export default function Home() {
     if (searchParams.toString() == "") {
       return (
       <div className="flex flex-col mx-24">
-        <h1 className='text-5xl py-8'>
+        <h1 className='text-5xl py-8 text-white'>
           Success!
         </h1>
         <div className='flex items-center'>
@@ -24,13 +24,13 @@ export default function Home() {
             <circle cx="12" cy="12" r="9" />
             <path d="M9 12l2 2l4 -4" />
           </svg>
-          <p className='px-4'>Your message has been send. Big Munny Photos will reach out as soon as possible.</p>
+          <p className='px-4 text-white'>Your message has been sent. Big Munny Photos will reach out as soon as possible.</p>
         </div>
       </div>)
     } else {
       return (
       <div className="flex flex-col mx-24">
-        <h1 className='text-5xl py-8'>
+        <h1 className='text-5xl py-8 text-white'>
             Error Sending Message
         </h1>
         <div className='flex items-center'>
@@ -39,7 +39,7 @@ export default function Home() {
             <line x1="15" y1="9" x2="9" y2="15" />
             <line x1="9" y1="9" x2="15" y2="15" />
           </svg>
-          <p className='px-4'>Error message: {searchParams.get("message")}</p>
+          <p className='px-4 text-white'>Error message: {searchParams.get("message")}</p>
         </div>
       </div>
       )
