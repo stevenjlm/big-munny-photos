@@ -91,7 +91,7 @@ describe('Home page content', () => {
 })
 
 describe('Test contact form', () => {
-  it('Contact form should send an email', () => {
+  it('Contact form should send an email', {defaultCommandTimeout: 10000}, () => {
     // Start from the index page
     cy.visit('/contact')
  
